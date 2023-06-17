@@ -1,0 +1,60 @@
+Given an array, cyclically rotate the array clockwise by one. 
+
+Examples:  
+
+Input:  arr[] = {1, 2, 3, 4, 5}
+Output: arr[] = {5, 1, 2, 3, 4}
+Cyclically rotate an array by one
+Arrays
+Solve Problem
+
+Following are steps. 
+1) Store last element in a variable say x. 
+2) Shift all elements one position ahead. 
+3) Replace first element of array with x.
+
+Another approach:
+
+We can use two pointers, say i and j which point to first and last element of array respectively. As we know in cyclic rotation we will bring last element to first and shift rest in forward direction, so start swaping arr[i] and arr[j] and keep j fixed and i moving towards j.  Repeat till i is not equal to j.
+
+import java.util.Arrays;
+ 
+public class Test
+{
+    static int arr[] = new int[]{1, 2, 3, 4, 5};
+     
+    
+    static void rotate()
+    {
+       int i = 0, j = arr.length - 1;
+       while(i != j)
+       {
+         int temp = arr[i];
+         arr[i] = arr[j];
+         arr[j] = temp;
+         i++;
+       }
+    }
+     
+    /* Driver program */
+    public static void main(String[] args)
+    {
+        System.out.println("Given Array is");
+        System.out.println(Arrays.toString(arr));
+         
+        rotate();
+         
+        System.out.println("Rotated Array is");
+        System.out.println(Arrays.toString(arr));
+    }
+}
+Output
+
+Given array is 
+1 2 3 4 5 
+Rotated array is
+5 1 2 3 4 
+
+Time Complexity: O(n), as we need to iterate through all the elements. Where n is the number of elements in the array.
+Auxiliary Space: O(1), as we are using constant space.
+ 

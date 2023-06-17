@@ -1,0 +1,39 @@
+Find K Closest Elements
+Java O(N) solution
+https://leetcode.com/problems/find-k-closest-elements/description/
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        LinkedList<Integer> list = new LinkedList<Integer>();
+        int pos = Arrays.binarySearch(arr, x);
+        if(pos < 0) {
+            pos = -pos-1;
+        }
+        if(pos > 0 && Math.abs(arr[pos-1] - x) <= Math.abs(arr[pos]-x))
+            pos -= 1;
+        list.add(arr[pos]);
+        int count = 1;
+        int left = pos - 1;
+        int right = pos + 1;
+        while(count < k && left >=0 && right < arr.length) {
+            if(Math.abs(arr[left] - x) <= Math.abs(arr[right]-x)) {
+                list.addFirst(arr[left]);
+                left -= 1;
+            } else {
+                list.addLast(arr[right]);
+                right += 1;
+            }
+            count += 1;     
+        }
+        while(count < k && left >=0) {
+            list.addFirst(arr[left]);
+            left -= 1;
+            count++;
+        }
+        while(count < k && right < arr.length) {
+            list.addLast(arr[right]);
+            right += 1;
+            count++;
+        }
+        return list;
+    }
+}

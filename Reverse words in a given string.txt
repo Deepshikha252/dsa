@@ -1,0 +1,110 @@
+// Java program to reverse a string
+// s = input()
+public class ReverseWords
+{
+
+	public static void main(String[] args)
+	{
+		String s[] = "i like this program very much".
+										split(" ");
+		String ans = "";
+		for (int i = s.length - 1; i >= 0; i--)
+		{
+			ans += s[i] + " ";
+		}
+		System.out.println("Reversed String:");
+		System.out.println(ans.substring(0,
+								ans.length() - 1));
+	}
+}
+
+
+Input: s = “geeks quiz practice code” 
+Output: s = “code practice quiz geeks”
+
+Input: s = “getting good at coding needs a lot of practice” 
+Output: s = “practice of lot a needs coding at good getting”
+
+Reverse words in a given string
+Strings
+Accolite
+Adobe
++8 more
+Solve Problem
+Submission count: 1.2L
+Algorithm:  
+
+Initially, reverse the individual words of the given string one by one, for the above example, after reversing individual words the string should be “i ekil siht margorp yrev hcum”.
+Reverse the whole string from start to end to get the desired output “much very program this like i” in the above example.
+Below is the implementation of the above approach: 
+
+
+// Java program to
+// reverse a String
+import java.util.*;
+class GFG{
+ 
+// Reverse the letters
+// of the word
+static void reverse(char str[],
+                    int start,
+                    int end)
+{
+  // Temporary variable
+  // to store character
+  char temp;
+   
+  while (start <= end)
+  {
+    // Swapping the first
+    // and last character
+    temp = str[start];
+    str[start] = str[end];
+    str[end] = temp;
+    start++;
+    end--;
+  }
+}
+// Function to reverse words
+static char[] reverseWords(char []s)
+{
+  // Reversing individual words as
+  // explained in the first step
+ 
+  int start = 0;
+  for (int end = 0; end < s.length; end++)
+  {
+    // If we see a space, we
+    // reverse the previous
+    // word (word between
+    // the indexes start and end-1
+    // i.e., s[start..end-1]
+    if (s[end] == ' ')
+    {
+      reverse(s, start, end);
+      start = end + 1;
+    }
+  }
+ 
+  // Reverse the last word
+  reverse(s, start, s.length - 1);
+ 
+  // Reverse the entire String
+  reverse(s, 0, s.length - 1);
+  return s;
+}
+ 
+// Driver Code
+public static void main(String[] args)
+{
+  String s = "i like this program very much ";
+  char []p = reverseWords(s.toCharArray());
+  System.out.print(p);
+}
+}
+ 
+// This code is contributed by gauravrajput1
+Output
+much very program this like i
+Time complexity: O(N)
+Auxiliary Space: O(N)

@@ -1,0 +1,136 @@
+https://www.youtube.com/watch?v=4tU7d0TTiZQ
+https://leetcode.com/problems/remove-nth-node-from-end-of-list/
+
+https://www.youtube.com/watch?v=xFAVw4ykbl4
+
+vvi->  https://www.youtube.com/watch?v=rTPkjZKfVUos
+
+
+https://www.geeksforgeeks.org/linked-list-set-3-deleting-node/
+
+
+
+Implementation
+
+    Take the Linked List input from the user and calculate the length of the Linked List
+    Accept the nth node that the user wants to delete
+    Check if the value of n is valid should not be negative or 0 and should not exceed the size of Linked List
+    If the user wants to delete the first node then just change the header to next in the Linked List
+    Else go ahead and traverse the Linked List to the nth node
+    Change the next of (n-1)th node to (n+1)th node
+    Done we have deleted the nth node its memory will automatically be deleted since there are no references to it.
+
+
+
+
+VVI-> https://prepinsta.com/java-program/deletion-from-the-nth-position-in-a-linked-list/
+
+The following method uses static functions that are called with header references passed in them
+Run
+
+import java.lang.*;
+
+// Node Class
+class Node {
+    int data;
+    Node next;
+
+    Node(int x) // parameterized constructor
+    {
+        data = x;
+        next = null;
+    }
+}
+
+class Main
+{
+
+
+    static Node deleteNthNode(int n, Node head) {
+        int len = calcLen(head);
+
+        // Can only insert after 1st position
+        // Can't insert if position to insert is greater than size of Linked List
+        if(n < 1 || n > len)
+            System.out.println("Can't delete\n");
+
+        else
+        {
+            if(n == 1)
+            {
+                // head has to be deleted
+                System.out.println("Deleted: " + head.data);
+                head = head.next;
+                return head;
+            }
+            // required to traverse
+            Node temp = head;
+            Node previous = null;
+
+            // traverse to the nth node
+            while(--n > 0) {
+                previous = temp;
+                temp = temp.next;
+            }
+            // assigned next node of the previous node to nth node's next
+            previous.next = temp.next;
+            System.out.println("Deleted: " + temp.data);
+        }
+        return head;
+    }
+    public static Node insert(Node head, int data)
+    {
+        Node newNode = new Node(data);
+        newNode.next = head;
+        head = newNode;
+
+        return head;
+    }
+    static void showList(Node temp) {
+
+        //as linked list will end when Node is Null
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+        System.out.println("\n");
+    }
+
+    static int calcLen(Node node){
+        int len = 0;
+
+        while(node!=null)
+        {
+            node = node.next;
+            len++;
+        }
+        return len;
+    }
+
+    public static void main(String args[])
+    {
+        Node head = null;
+
+        head = insert(head, 35);
+        head = insert(head, 34);
+        head = insert(head, 33);
+        head = insert(head, 32);
+        head = insert(head, 31);
+        head = insert(head, 30);
+        showList(head);
+
+
+        head = deleteNthNode( 3, head);
+        head = deleteNthNode( 4, head);
+        showList(head);
+
+    }
+}
+
+Output
+
+30 31 32 33 34 35 
+
+Deleted: 32
+Deleted: 34
+30 31 33 35

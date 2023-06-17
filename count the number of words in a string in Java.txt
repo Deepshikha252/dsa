@@ -1,0 +1,191 @@
+
+
+How to count the number of words in a string in Java
+
+
+This tutorial consists of two ways to count the number of words in a string in Java.
+
+    Using a String Tokenizer class.
+    Using the CommandLine itself.
+
+But before that check this simple example:
+
+hat we will basically do is count the number of spaces in the string, because the number of words is always one greater than the number of spaces in the String.
+
+Example:
+
+String: CSS is used for styling in the webpage.
+
+Spaces in the string: 7
+
+Number of words in the string: 8
+
+Okay then, let’s go straight to the code.
+public class test
+{ 
+    public static void main(String args[]) 
+    { 
+        String str="India is a really fast growing economy";
+        System.out.println(str);
+        int cnt=1;
+        
+        int ln=str.length();
+        for(int i=0;i<ln;i++)
+        {
+          if(str.charAt(i)==' ')
+          {
+            cnt++;
+          }
+        }
+        System.out.println("The string contains "+cnt+ " words.");
+        
+        
+    } 
+}
+
+The above is very easy and self explainable, nothing fancy.
+
+We have used the Java charAt() method in the program which returns the character at a certain index in the given string.
+StringTokenizer Class
+
+What is this StringTokenizer class?
+
+StringTokenizer is a class whose object tokenizes a given String. A StringTokenizer class can have up to three constructors:
+
+    String: The string which is to be tokenized.
+    delim: which are delimiters(such as space, tab etc.) which tokenizes the given String.
+    flag: if the flag is false, delimiters are used to separate the tokens, or if the flag is true, delimiters are themselves considered as tokens.
+
+In the code given down below, a WordsInAString class has a single String, which is passed as it’s the constructor.  The class has one stringLength( ) method which calculates the number of words in the String.
+
+At first, we create a StringTokenizer class. A variable identified as length holds the number of words in the String. The countTokens( ) method is a method in StringTokenizer class which counts the number of tokens in the String, keeping in account the type of delimiters used. In this code, no delim parameter is used in the countTokens( ) method and hence the delimiter used by the StringTokenizer class is the default space or tab. The length is then printed. The code for the problem is as follows :
+Count the number of words in a string in Java
+import java.util.Scanner;
+import java.util.StringTokenizer;
+public class WordsInAString{
+  String str;
+  public WordsInAString(String str){
+    this.str = str;
+  }
+  public void stringLength(){
+    if(str.isEmpty()||str == null){
+      System.out.println("There are no words in the sentence.\n");
+    }
+    else{
+      StringTokenizer words = new StringTokenizer(str); //StringTokenizer class object is created
+      int length = words.countTokens();  //countTokens() method counts the number of words
+      System.out.println("There are "+length+" words in the Sentence."); //print the length
+    }
+  }
+}
+class Test{
+  public static void main(String args[]){
+    Scanner s = new Scanner(System.in);
+    String input;
+    System.out.println("\nEnter a String.");
+    input = s.nextLine();
+    WordsInAString w = new WordsInAString(input);
+    w.stringLength();
+  }
+}
+
+ 
+
+A single line of input is given which contains the String. The output is the number of words in the String.
+Output
+
+Enter a String.
+Welcome to codespeedy
+
+There are 3 words in the sentence.
+
+StringTokenizer Class
+
+What is this StringTokenizer class?
+
+StringTokenizer is a class whose object tokenizes a given String. A StringTokenizer class can have up to three constructors:
+
+    String: The string which is to be tokenized.
+    delim: which are delimiters(such as space, tab etc.) which tokenizes the given String.
+    flag: if the flag is false, delimiters are used to separate the tokens, or if the flag is true, delimiters are themselves considered as tokens.
+
+In the code given down below, a WordsInAString class has a single String, which is passed as it’s the constructor.  The class has one stringLength( ) method which calculates the number of words in the String.
+
+At first, we create a StringTokenizer class. A variable identified as length holds the number of words in the String. The countTokens( ) method is a method in StringTokenizer class which counts the number of tokens in the String, keeping in account the type of delimiters used. In this code, no delim parameter is used in the countTokens( ) method and hence the delimiter used by the StringTokenizer class is the default space or tab. The length is then printed. The code for the problem is as follows :
+Count the number of words in a string in Java
+import java.util.Scanner;
+import java.util.StringTokenizer;
+public class WordsInAString{
+  String str;
+  public WordsInAString(String str){
+    this.str = str;
+  }
+  public void stringLength(){
+    if(str.isEmpty()||str == null){
+      System.out.println("There are no words in the sentence.\n");
+    }
+    else{
+      StringTokenizer words = new StringTokenizer(str); //StringTokenizer class object is created
+      int length = words.countTokens();  //countTokens() method counts the number of words
+      System.out.println("There are "+length+" words in the Sentence."); //print the length
+    }
+  }
+}
+class Test{
+  public static void main(String args[]){
+    Scanner s = new Scanner(System.in);
+    String input;
+    System.out.println("\nEnter a String.");
+    input = s.nextLine();
+    WordsInAString w = new WordsInAString(input);
+    w.stringLength();
+  }
+}
+
+ 
+
+A single line of input is given which contains the String. The output is the number of words in the String.
+Output
+
+Enter a String.
+Welcome to codespeedy
+
+There are 3 words in the sentence.
+
+Count Words in a String using Java program
+
+//Java program to count words in a string.
+ 
+import java.util.Scanner;
+  
+class CountWords
+{
+    public static void main(String args[])
+    {
+        String text;
+        int countWords=0;
+         
+        Scanner SC=new Scanner(System.in);
+         
+        System.out.print("Enter string: ");
+        text=SC.nextLine();
+         
+        //word count
+        for(int i=0; i<text.length()-1; i++)
+        {
+            if(text.charAt(i)==' ' && text.charAt(i+1)!=' ')
+                countWords++;
+        }
+         
+        System.out.println("Total number of words in string are: "+ (countWords+1));
+        //since last word does not contain and character after that
+                     
+    }
+}
+
+Output
+
+    
+    Enter string: Hello world
+    Total number of words in string are: 2
+

@@ -1,0 +1,65 @@
+class Solution {
+    public int[] dailyTemperatures(int[] temperatures) {
+        int n=temperatures.length;
+        int j=n-2;
+        int ans[]= new  int[n];
+        Stack<Integer> s = new Stack<>();
+        s.add(n-1);
+        ans[n-1]=0;
+        for(int i=n-2;i>=0;i--){
+            while(!s.isEmpty() && temperatures[s.peek()]<=temperatures[i])
+                s.pop();
+            int pg= s.isEmpty()?0:s.peek();
+            ans[j--]=pg==0?0:pg-i;
+            s.add(i);
+        }
+        return ans;
+    }
+}
+
+
+Create an object (obj = {index, value}) index = index of the temeratures and value = temerature.
+If the object is empty or the coming value is smaller than the top value, then push it into the stack+object.
+else, if the forthcoming value is greater than the top of the stack, pop the values while it is greater than the top and get the difference between the index that will be the next warmer day.
+When the array is wholly iterated, check whether the object is empty. If not, then there are some days for which there is no warmer day ; therefore assign 0 on their corresponding indexes.
+
+var dailyTemperatures = function(temperatures) 
+{
+    let map = [];
+    let result = [];
+    for(let temp=0;temp<temperatures.length;temp++)
+    {
+        if(map.length == 0)
+            map.push({index: temp, val: temperatures[temp]});
+
+        else if(map.length!=0 && map[map.length-1].val > temperatures[temp])
+            map.push({index: temp, val: temperatures[temp]});
+        
+        else
+        {
+            let key = map.length-1;
+            let v = map[key].val;
+            while(temperatures[temp]>v && map.length)
+            {
+                
+                let ind = map[key].index;
+                let dif = Math.abs(ind-temp);
+                result[ind] = dif;
+                map.pop();
+                key = map.length-1;
+                if(!map.length)
+                    break;
+                v = map[key].val;
+            }
+            map.push({index: temp, val: temperatures[temp]});
+        }
+    }
+    while(map.length!=0)
+    {
+        let ind = map[map.length-1].index;
+        result[ind] = 0;
+        map.length--;
+    }
+    
+    return result;
+};

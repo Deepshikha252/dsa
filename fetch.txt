@@ -1,0 +1,11 @@
+http://jsonviewer.stack.hu/
+https://www.geeksforgeeks.org/how-to-use-the-javascript-fetch-api-to-get-data/
+
+https://reqres.in/
+[6:23 PM, 11/5/2022] Partha Ns: How to fetch data from api
+[6:23 PM, 11/5/2022] Partha Ns: Rendar api data in a table using js
+[6:23 PM, 11/5/2022] Partha Ns: Implementation of search bar
+[6:23 PM, 11/5/2022] Partha Ns: Manipulation of its(searchbar) DOM
+[6:23 PM, 11/5/2022] Partha Ns: Diffrence between Virtual DOM and Real DOM
+
+https://lab.reaal.me/jsrobot/

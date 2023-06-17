@@ -1,0 +1,41 @@
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+        List<Integer> list=new ArrayList<>();
+        int left=0,right=matrix[0].length;
+        int top=0,bottom=matrix.length;
+        while(left<right && top<bottom){
+        for(int i=left;i<right;i++){
+            list.add(matrix[top][i]);
+        }
+        top+=1;
+        for(int i=top;i<bottom;i++){
+            list.add(matrix[i][right-1]);
+        }
+        right-=1;
+         if (!(left<right && top<bottom)){
+                break;
+            }
+        for(int i=right-1;i>left;i--){
+            list.add(matrix[bottom-1][i]);
+        }
+        bottom-=1;
+        for(int i=bottom;i>=top;i--){
+            list.add(matrix[i][left]);
+        }
+        left+=1;
+    }
+        return list;
+    }
+    
+}
+
+Time Complexity - Time taken to cover row * column elements is O(row * column) = O(N).
+Space Complexity - Since we do not use any extra space, space taken is O(1).
+Explanation - We fix four pointers - left, right, top, bottom which we use to traverse the matrix.
+After moving in one direction, we change our direction to traverse cyclically.
+On traversing the top row, we increment top. On traversing the right row, we decrement right.
+On traversing the bottom row, we decrement bottom. On traversing the left row, we increment left.
+direction 1 - left to right
+direction 2 - top to bottom
+direction 3 - right to left
+direction 4 - bottom to top

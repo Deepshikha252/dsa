@@ -1,0 +1,41 @@
+find the closest point of x
+take two variable start & end
+start will point the element before the closest point
+end will point the element after the closest point
+spread both side
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        int closestPoint = -1;
+        int minDiff = Integer.MAX_VALUE;
+		
+        // find the closest point of x
+        for(int i=0; i<arr.length; i++){
+            if(Math.abs(x - arr[i]) < minDiff){
+                minDiff = Math.abs(x - arr[i]);
+                closestPoint = i;
+            }
+        }
+		
+        int start = closestPoint - 1;
+        int end = closestPoint + 1;
+        int count = 1;
+        
+		// sprade both side and pick k-1 element
+        while(count < k){
+            if(end >= arr.length || start >= 0 && Math.abs(x - arr[start]) <= Math.abs(x - arr[end])){
+                start--;
+            } else {
+                end++;
+            }
+            count++;
+        }
+		
+        List<Integer> l = new ArrayList();
+        for(int i=start+1; i<end; i++){
+            l.add(arr[i]);
+        }
+        return l;
+    }
+}
+Time: O(n)
+Space: O(1) (excluding the result list)

@@ -1,0 +1,181 @@
+approach:
+To solve the problem follow the below idea:
+
+Draw the path that the spiral makes. We know that the path should turn 
+clockwise whenever it would go out of bounds or into a cell that was previously visited
+
+Follow the given steps to solve the problem:
+
+Let the array have R rows and   L columns
+seen[r] denotes that the cell on the r-th row and L-th column was previously visited. Our current position is (r, l), facing direction di, and we want to visit R x l(n*m) total cells.
+As we move through the matrix, our candidate’s next position is (lr, LL). 
+If the candidate is in the bounds of the matrix and unseen, then it becomes our next position; otherwise, our next position is the one after performing a clockwise turn
+
+
+/// Java program to print a given matrix in spiral form
+import java.io.*;
+
+class main {
+
+	// Function print matrix in spiral form
+	static void spiralPrint(int bottom, int right int a[][])
+	{
+		int i, top = 0, left = 0;
+
+		/* top - starting row index
+		bottom - ending row index
+		left- starting column index
+		right - ending column index
+		i - iterator
+		*/
+
+		while (top < bottom && left < right) {
+			// Print the first row from the remaining rows
+			for (i = left; i < right; ++i) {
+				System.out.print(a[top][i] + " ");
+			}
+			top++;
+
+			// Print the last column from the remaining
+			// columns
+			for (i = top; i < bottom; ++i) {
+				System.out.print(a[i][right - 1] + " ");
+			}
+			right--;
+
+			// Print the last row from the remaining rows */
+			if (top < bottom) {
+				for (i = right - 1; i >= l; --i) {
+					System.out.print(a[bottom - 1][i] + " ");
+				}
+				bottom--;
+			}
+
+			// Print the first column from the remaining
+			// columns */
+			if (left <bottom) {
+				for (i = bottom - 1; i >=top; --i) {
+					System.out.print(a[i][left] + " ");
+				}
+				left++;
+			}
+		}
+	}
+
+	// Driver Code
+
+         public static void main (String[] args){
+        Scanner sc = new Scanner (System.in);
+             int n = sc.nextInt() ;
+          int arr[] = new int [n] ;
+          for(int i=0; i<n; i++) 
+              arr[i] = sc.nextInt();
+           System.out.println(spiralPrint());  
+// 		int R = 4;
+// 		int C = 4;
+// 		int a[][] = { { 1, 2, 3, 4 },
+// 					{ 5, 6, 7, 8 },
+// 					{ 9, 10, 11, 12 },
+// 					{ 13, 14, 15, 16 } };
+
+// 		// Function Call
+// 		spiralPrint(R, C, a);
+	}
+
+
+}
+
+
+import java.io.*; 
+class MAIN {
+  public static void spiralMatrixPrint(int[][] arr) {
+
+    int rows = arr.length;
+    int cols = arr[0].length;
+  // Defining the boundaries of the matrix.
+  int top = 0, bottom = rows - 1, left = 0, right = cols - 1;
+  
+  // Defining the direction in which the array is to be traversed.
+  int dir = 1;
+ 
+  while (top <= bottom && left <= right) {
+
+    if (dir == 1) {    // moving left->right
+      for (int i = left; i <= right; ++i) {
+        System.out.print(arr[top][i] + " ");
+      }
+      // Since we have traversed the whole first
+      // row, move down to the next row.
+      ++top;
+      dir = 2;
+    } 
+    else if (dir == 2) {     // moving top->bottom
+      for (int i = top; i <= bottom; ++i) {
+          System.out.print(arr[i][right]+ " ");
+      }
+      // Since we have traversed the whole last
+      // column, move left to the previous column.
+      --right;
+      dir = 3;
+    } 
+    else if (dir == 3) {     // moving right->left
+      for (int i = right; i >= left; --i) {
+          System.out.print(arr[bottom][i]+ " ");
+      }
+      // Since we have traversed the whole last
+      // row, move up to the previous row.
+      --bottom;
+      dir = 4;
+    } 
+    else if (dir == 4) {     // moving bottom->up
+      for (int i = bottom; i >= top; --i) {
+          System.out.print(arr[i][left]+ " ");
+      }
+      // Since we have traversed the whole first
+      // col, move right to the next column.
+      ++left;
+      dir = 1;
+    }
+  }   
+}
+  public static void main(String[] args) 
+  { 
+    // Driver code
+    // Change the following array to test 
+    // on some other input
+    int a[][] = { {1,2,3,4},
+                {5,6,7,8},
+                {9,10,11,12}};
+    spiralMatrixPrint(a); 
+  } 
+}
+
+he Spiral Matrix problem takes a 2-Dimensional array of N-rows and M-columns as an input, and prints the elements of this matrix in spiral order.
+
+
+The spiral begins at the top left corner of the input matrix, and prints the elements it encounters, while looping towards the center of this matrix, in a clockwise manner. ​
+
+How does the spiral matrix algorithm work?
+
+    First, four variables containing the indices for the corner points of the array are initialized.
+    The algorithm starts from the top left corner of the array, and traverses the first row from left to right. Once it traverses the whole row it does not need to revisit it, thus, it increments the top corner index.
+    Once complete, it traverses the rightmost column top to bottom. Again, once this completes, there is no need to revisit the rightmost column, thus, it decrements the right corner index.
+    Next, the algorithm traverses the bottommost row and decrements the bottom corner index afterward.
+    Lastly, the algorithm traverses the leftmost column, incrementing the left corner index once it’s done.
+
+This continues until the left index is greater than the right index, and the top index is greater than the bottom index.
+Implementation
+
+The following code implements the spiral matrix algorithm in  Java:
+
+
+2D Array
+
+2D array can be defined as an array of arrays. The 2D array is organized as matrices which can be represented as the collection of rows and columns.
+
+However, 2D arrays are created to implement a relational database look alike data structure. It provides ease of holding bulk of data at once which can be passed to any number of functions wherever required.
+How to declare 2D Array
+
+The syntax of declaring two dimensional array is very much similar to that of a one dimensional array, given as follows.
+
+    int arr[max_rows][max_columns];   

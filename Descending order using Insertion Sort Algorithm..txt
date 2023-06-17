@@ -1,0 +1,54 @@
+Write a program to sort an array elements in Descending order using Insertion Sort Algorithm.
+
+
+
+Insertion Sort :-Insertion sort is a simple sorting algorithm that works out how to sort cards playing in our hands.
+
+Descending order :- Numbers are said to be in descending order when they are arranged from largest to smallest number. Such as 21, 17, 13, 9 and 3 are arranged in descending order.
+
+Insertion Sort Algorithm
+
+START
+Step 1 : If it is the first element, it is already sorted. return 1;
+Step 2 : Pick next element
+Step 3 : Compare with all elements in the sorted sub-list
+Step 4 : Shift all the elements in the sorted sub-list that is less than the 
+value to be sorted
+Step 5 : Insert the value
+Step 6 : Repeat until list is sorted
+STOP
+
+
+
+Insertion Sort Program in Descending order
+C C++ Java Python C# PHP
+
+// Insertion sort in Java
+import java.util.Arrays;
+class LFC {
+void insertion_sort(int arr[]) {
+int size = arr.length;
+for (int step = 1; step < size; step++) {
+int key = arr[step];
+int j = step - 1;
+while (j >= 0 && key > arr[j]) {
+// For ascending order, change key> arr[j] to key< arr[j].
+arr[j + 1] = arr[j];
+--j;
+}
+arr[j + 1] = key;
+}
+}
+public static void main(String args[]) {
+int[] arr = { 15, 50, -27, -4, 10 };
+LFC is = new LFC();
+is.insertion_sort(arr);
+System.out.println("Sorted Array in descending Order: ");
+System.out.println(Arrays.toString(arr));
+}
+}
+
+Output
+
+Sorted array in descending order:
+50 15 10 -4 -27

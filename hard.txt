@@ -1,0 +1,102 @@
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        int count=0;
+        while(head!=null){
+            count++;
+            head = head.next;
+            if(count==10001) return true;
+        }
+        return false;
+    }
+}
+
+https://www.google.com/search?client=firefox-b-d&q=Detect+cycle+in+linked+list%2C
+https://leetcode.com/problems/linked-list-cycle/discuss/1369573/Java-clean-Solution-using-Boundary-Condition-beats-100
+https://leetcode.com/problems/merge-two-sorted-lists/description/
+In Question it is mentioned that total 10^4 nodes are possible so if there is a possiblity of a circular loop then head will never point towards null so as the count hits 10^4+1 we know that there is no end to this LinkedList so print True.
+
+https://leetcode.com/problems/intersection-of-two-linked-lists/
+
+https://leetcode.com/problems/merge-two-sorted-lists/solutions/?languageTags=java
+
+https://leetcode.com/problems/reverse-linked-list/
+https://leetcode.com/problems/substring-with-concatenation-of-all-words/
+
+https://www.google.com/search?client=firefox-b-d&q=Find+pairs+of+anagrams+in+a+list+of+strings.leetcode+in+java
+
+https://leetcode.com/problems/find-all-anagrams-in-a-string/
+
+https://leetcode.com/problems/group-anagrams/
+
+
+https://leetcode.com/problems/valid-anagram/
+
+https://www.geeksforgeeks.org/given-a-sequence-of-words-print-all-anagrams-together/
+
+
+https://studyalgorithms.com/string/leetcode-group-anagrams-solution/
+
+https://just4once.gitbooks.io/leetcode-notes/content/leetcode/hash-table/438-find-all-anagrams-in-a-string.html
+
+https://leetcode.com/problems/trapping-rain-water/
+
+
+https://www.google.com/search?client=firefox-b-d&q=Given+a+Singly+Circular+Linked+List%2C+starting+from+the+first+node+delete+all+odd+position+nodes+in+it.++Note%3A+Linked+list+is+considered+to+have+1-based+indexing.+That+is%2C+the+first+element+in+the+linked+list+is+at+position+1.+
+
+https://www.geeksforgeeks.org/delete-middle-of-linked-list/?id=discuss
+
+https://www.geeksforgeeks.org/write-a-c-function-to-print-the-middle-of-the-linked-list/?id=discuss
+
+https://www.geeksforgeeks.org/write-a-c-function-to-print-the-middle-of-the-linked-list/?id=discuss
+
+
+https://leetcode.com/problems/middle-of-the-linked-list/
+
+https://www.google.com/search?client=firefox-b-d&q=Question%3A+Given+a+singly+linked+list+of+characters%2C+write+a+function+that+returns+true+if+the+given+list+is+a+palindrome%2C+else+false
+
+https://leetcode.com/problems/palindrome-linked-list/
+
+int FindMergeNode(Node* headA, Node* headB) {
+ // Complete this function
+ // Do not write the main method. 
+ 
+ Node *temp1;
+ while(headA != NULL)
+ {
+ temp1=headB;
+ while(temp1!=NULL)
+ {
+ if(headA == temp1)
+ {
+ return temp1->data;
+ }
+ temp1=temp1->next;
+ }
+ 
+ headA=headA->next;
+ }
+ return headA->data;
+}
+
+reverse
+
+class Solution 
+{   
+    public ListNode reverseList(ListNode head) 
+    {
+        ListNode previous = null , next = null ;        
+        return reverse( previous , head , next ) ;
+    }
+    public ListNode reverse( ListNode previous , ListNode head , ListNode next )
+    {
+        if( head == null )
+        {   
+            return previous ;
+        }   
+        next = head.next ;
+        head.next = previous ;
+        previous = head ;
+        head = next ;
+        return reverse( previous , head , next ) ;
+    }
+}

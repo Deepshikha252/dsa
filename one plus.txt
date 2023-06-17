@@ -1,0 +1,16 @@
+   class Solution {
+    public int[] plusOne(int[] digits) {
+        int last=digits.length-1;
+        while(digits[last]==9 && last>0){
+            digits[last]=0;
+            last--;
+        }
+        if(digits[last]==9){
+            int[] newNums=new int[digits.length+1];
+            newNums[0]=1;
+            return newNums;
+        }
+        ++digits[last];
+        return digits;
+    }
+}https://leetcode.com/problems/plus-one/solutions/2717009/simple-and-easy-java-solution-100-faster/?orderBy=newest_to_oldest&languageTags=java

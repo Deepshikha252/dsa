@@ -1,0 +1,170 @@
+How To Display Fibonacci Series In Java?
+
+https://www.edureka.co/blog/fibonacci-series-in-java/
+Last updated on Jun 17,2021 28.2K Views
+Share
+image not found!
+image not found!
+image not found!
+image not found!
+image not found!
+image not found!
+
+Archana Choudary Archana Choudary
+
+16 / 29 Blog from Java Programs
+
+The Fibonacci Sequence is a peculiar series of numbers named after Italian mathematician, known as Fibonacci. Starting with 0 and 1, each new number in the Fibonacci Series is simply the sum of the two before it. For example, starting with 0 and 1, the first 5 numbers in the sequence would be 0, 1, 1, 2, 3 and so on. In this article, let’s learn how to write the Fibonacci Series in Java.
+
+You can mainly write Fibonacci Series in Java in two ways:
+
+    Fibonacci Series without using recursion
+        Using For Loop
+        Using While Loop
+    Fibonacci Series using recursion
+
+Let’s get started!
+Fibonacci Series without using recursion 
+
+When it comes to generating the Fibonacci Series without using recursion, there are two ways:
+
+    Using ‘for’ loop
+    Using ‘while’ loop
+
+Method1: Java Program to write Fibonacci Series using for loop
+
+The program below should help you on how to write a java program to generate first ‘n’ numbers in the Fibonacci Series using for loop. The logic used here is really simple. First, I have initialized the first two numbers of series. Then comes the for loop, which adds up its two immediate predecessors and prints the value. This continues until the program prints the first ‘n’ numbers in the series.
+Course Curriculum
+Java Certification Training Course
+
+    Instructor-led SessionsReal-life Case StudiesAssignmentsLifetime Access
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+	
+package Edureka;
+import java.util.Scanner;
+public class Fibonacci {
+  
+    public static void main(String[] args) 
+    {
+     
+         int n, first = 0,next = 1;
+          
+            System.out.println("Enter how may fibonnaci numbers to print");
+            Scanner scanner = new Scanner(System.in);
+            n = scanner.nextInt();
+            System.out.print("The first " + n + " Fibonacci numbers are: ");
+            System.out.print(first + " " + next);
+            for (int i = 1; i<=n-2; ++i)
+            {
+                int sum = first + next;
+                first = next;
+                next = sum;
+                System.out.print(" " + sum);
+            }
+  
+    }
+  
+}
+
+
+Output:
+1
+2
+3
+	
+Enter how may fibonnaci numbers to print
+7
+The first 7 Fibonacci numbers are: 0 1 1 2 3 5 8
+
+Note: Condition in for loop is ‘n-2’. That’s because the program already prints ‘0’ and ‘1’ before it begins with for loop.
+Method2: Java Program to write Fibonacci Series using while loop
+
+The logic is similar to the previous method. It’s just the while loop condition that you need to be careful about. Take a look at the java code below to understand how to generate Fibonacci Series using while loop.
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+	
+package Edureka;
+import java.util.Scanner;
+public class FibWhile {
+  
+    public static void main(String[] args) 
+    {
+     
+         int n, first = 0,next = 1;
+          
+            System.out.println("Enter how may fibonnaci numbers to print");
+            Scanner scanner = new Scanner(System.in);
+            n = scanner.nextInt();
+            System.out.print("The first " + n + " Fibonacci numbers are: ");
+            System.out.print(first + " " + next);
+            int i = 1;
+            while (i<n-1)
+            {
+                int sum = first + next;
+                first = next;
+                next = sum;
+                System.out.print(" " + sum);
+                i++;
+            }
+  
+    }
+}
+
+Output:
+Programming & Frameworks Training
+1
+2
+3
+	
+Enter how may fibonnaci numbers to print 
+7 
+The first 7 Fibonacci numbers are: 0 1 1 2 3 5 8 

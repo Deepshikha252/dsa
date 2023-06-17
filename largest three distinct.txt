@@ -1,0 +1,102 @@
+Find the largest three distinct elements in an array
+
+    Difficulty Level : Easy
+    Last Updated : 21 Jul, 2022
+
+Read
+Discuss
+
+Given an array with all distinct elements, find the largest three elements. Expected time complexity is O(n) and extra space is O(1). 
+
+Examples :
+
+Input: arr[] = {10, 4, 3, 50, 23, 90}
+Output: 90, 50, 23
+
+Recommended: Please try your approach on {IDE} first, before moving on to the solution.
+
+Method 1:
+
+Algorithm:
+
+1) Initialize the largest three elements as minus infinite.
+    first = second = third = -∞
+
+2) Iterate through all elements of array.
+   a) Let current array element be x.
+   b) If (x > first)
+      {
+          // This order of assignment is important
+          third = second
+          second = first
+          first = x   
+       }
+   c)  Else if (x > second and x != first)
+      {
+          third = second
+          second = x 
+      }
+   d)  Else if (x > third and x != second)
+      {
+          third = x  
+      }
+
+3) Print first, second and third.
+
+Below is the implementation of the above algorithm.
+
+// Java code to find largest three elements
+// in an array
+ 
+class PrintLargest {
+    /* Function to print three largest elements */
+    static void print3largest(int arr[], int arr_size)
+    {
+        int i, first, second, third;
+ 
+        /* There should be atleast three elements */
+        if (arr_size < 3) {
+            System.out.print(" Invalid Input ");
+            return;
+        }
+ 
+        third = first = second = Integer.MIN_VALUE;
+        for (i = 0; i < arr_size; i++) {
+            /* If current element is greater than
+            first*/
+            if (arr[i] > first) {
+                third = second;
+                second = first;
+                first = arr[i];
+            }
+ 
+            /* If arr[i] is in between first and
+            second then update second  */
+            else if (arr[i] > second) {
+                third = second;
+                second = arr[i];
+            }
+ 
+            else if (arr[i] > third)
+                third = arr[i];
+        }
+ 
+        System.out.println("Three largest elements are " + first + " " + second + " " + third);
+    }
+ 
+    /* Driver program to test above function*/
+    public static void main(String[] args)
+    {
+        int arr[] = { 12, 13, 1, 10, 34, 1 };
+        int n = arr.length;
+        print3largest(arr, n);
+    }
+}
+/*This code is contributed by Prakriti Gupta
+and edited by Ayush Singla(@ayusin51)*/
+Output
+
+Three largest elements are 34 13 12
+
+Time Complexity: O(n)
+Auxiliary Space: O(1)

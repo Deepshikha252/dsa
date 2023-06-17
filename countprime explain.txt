@@ -1,0 +1,282 @@
+hi guys my name is khushbu and welcome
+to algorithms made easy
+in this video we will see the question
+count primes
+count the number of primes that are less
+than the non-negative number given to us
+which is n in the example one we are
+given
+is 10 and we can say that there are four
+prime numbers
+between number 1 to 10 which are
+2 3 5 and 7. for example 2 we are given
+n equal to 0
+and the answer would be 0 over here same
+for
+n equal to 1 wherein our answer would be
+0
+because in the number series when you
+start from 0 the first prime number
+would start from
+2 so let's go and see how we can solve
+this
+problem suppose we are given n is 10
+so we can see that 1 is a non-prime
+2 is a prime number 3 is also a prime
+number
+4 is a non-prime number because 4 can be
+divisible by 2 and 1. 5 is a prime
+number
+6 can be divisible by 2 3 and 1
+and so it's a non-prime 7 is a prime
+number
+8 9 and 10 are non-primes so
+we can say that within number 1 to 10 we
+have
+four prime numbers in this video we will
+see one of the famous algorithms that is
+used
+to count the number of primes we have
+which is called
+sieve of eratosthenes now let's see how
+this algorithm works
+suppose we have got the number as 30.
+over here i have taken
+an array of 30. so this is going to be a
+one dimensional array but just because
+of lack of space i have divided into
+three rows
+the first row over here is 1 to 10 11 to
+20 and then this is
+21 to 30. now what does this array
+represents
+this would represent true for all the
+composite numbers
+and false for all the prime numbers so
+initially i have
+marked everything as false stating that
+all the numbers are prime and now we'll
+start iterating
+so as we know 1 is not a prime number it
+is a composite number so we'll mark true
+for
+the number 1 and we'll start with 2
+because 2 is a prime number
+we'll be taking it as false and we'll
+mark
+all the numbers which are multiples of 2
+as true so that gives us all these
+numbers
+marked as true because these are the
+multiples of 2
+and so these are also divisible by 2
+other than being divisible by 1 so these
+would become our composite numbers now
+we'll move to 3
+now 3 is also a prime because it is
+still
+false and we do not have any number
+which
+could be multiplied with another number
+to give us
+3 so that's why 3 is false right now
+and so now what we are going to do is we
+will be marking
+all the multiples of 3 as composite
+so let's see what are the multiples of 3
+you get 6
+9 12 15 18 and so on so we'll be marking
+this as
+true and now we move on to the other
+number
+which has the value as false since
+4 is divisible by 2 and 1 we have true
+in
+4 so we will be moving on to 5 and we'll
+mark
+all its multiples as true so this
+becomes true
+and then we move on to the next number
+which is a prime number or which does
+not have a true value associated
+in the cell which comes out to be 7 and
+now
+we'll mark all its multiples as true
+now if you see that all of its multiples
+that were there
+are already marked true so there was no
+change in the array
+for the prime number 7 moving to the
+next number which is 11 that is also a
+prime number
+we need to mark all its multiples as
+true and we can see that 22 was already
+true
+now we go to 13 and mark its multiple as
+true
+which would give us 26 which was already
+true again
+and this loop was having no effect on
+our array
+next we move on to 17 now do we have the
+multiple of 17
+in this particular range no because 17
+multiplied by 2 would give you 34
+and that goes out of the range so we
+need not
+worry about the numbers after this 17
+and all the numbers that are still false
+are already a prime number and so we can
+just iterate over
+all the numbers now and check whatever
+values are
+false are the prime number indexes and
+so
+over here for this example we can find
+that there are
+nine prime numbers now what are
+the derivations or what are the
+properties that we saw while
+iterating for this n equal to 30 let's
+check
+we saw that for every number that we
+were iterating for
+that is every prime number for which we
+were marking the composites
+the first composite that was found
+false and we had to turn it to true was
+the number
+i into i so over here you can see for 2
+the first number is
+4 for 3 the first number that was marked
+false and we needed to mark it true
+was 9 for 5 the first number
+that we needed to mark was 25 and for 7
+11 13 we did not have any numbers that
+we would have marked
+so over here we can say that the first
+index
+that was needed to be changed to true
+would be
+starting from i into i and the second
+thing that we are going to note over
+here is that
+the only change in the array happened
+till this 5 which is equivalent to
+root of n and so we can say that the
+last digit for which
+the cell values could have changed in
+the array
+is square root of n because if you go
+after this 5 that is if you go for 7
+the first value that could have changed
+would have been into i that is 49
+and 49 is falling out of the range for n
+equal to 30
+and so there wouldn't be any value
+after this 5 that would affect
+the array that we are having
+and so these are the two properties that
+we can take care of
+and remember while solving this
+particular question
+so let's go ahead and code this
+particular approach out
+that is we will be taking the primes and
+marking
+all its composites as true and finally
+we'll check for the array and whatever
+is false
+is the prime number and so we can count
+the prime numbers
+that we are having the first and the
+foremost thing that we can do is
+if n is less than equal to 2 we can just
+return 0 because in that case we are
+just checking for
+0 and 1 that is less than n
+and we already know that 0 and 1 are
+not primes for the rest we need to
+create a boolean
+array and this array would be of length
+n and now we'll take a for loop and our
+for loop will start from i
+equal to 2 and would go up to square
+root of
+n so let's take the limit till which we
+are going to go
+and that limit would be the root of
+n and since this is a double we need to
+convert it into an integer
+and over here will go only up to limit
+and we'll do i plus plus so that's our
+outer for loop
+wherein we are going to check whether
+the value
+that is there at that particular index
+is false or true
+and if it is false then and only then we
+are going to find the composites for
+that number
+so we check whether
+the value is false and if it is false we
+are going to
+mark all the composites of that
+particular number to
+true
+and the other thing that we saw is that
+the first
+index to be flipped to true is
+i into i so will start from
+j equal to i into i j is less than
+n and j plus equals to i
+because we need to mark the multiples as
+true
+so this would give us the next multiple
+in the next iteration
+so what we are going to do is composites
+of j
+is marked as true so this would give us
+the array of composites
+wherein true represent
+composite and
+false represents
+primes so since we have the array filled
+we just need to iterate over that array
+and we can start from
+i equal to 2 because that is our first
+prime i less than
+n and i plus plus and if
+the value is false we can do a
+count plus plus and that count will
+represent my prime so let's take
+count equal to 0 and finally
+just return the count and
+this will go till the square root
+rather than less than the square root so
+that's one of the mistakes that we made
+let's correct that and run the code
+and it's giving a perfect result let's
+try it for a random bigger number
+and it's giving a perfect result let's
+submit this
+and it got submitted the time complexity
+for this particular approach
+is root n for the outer loop
+multiplied by the time complexity for
+the inner for loop
+now the inner for loop has a time
+complexity of log of
+log of n if you want to go and check it
+out
+the link for the proof is given in the
+solution part
+over here and you can check out the
+proof how it is coming out to be that
+the space complexity is of n because we
+have used a boolean
+array of length n so that's it for this
+video guys
+i hope you like the video and i'll see
+you in another one
+so till then keep learning keep coding

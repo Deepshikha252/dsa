@@ -1,0 +1,133 @@
+class Solution {
+    public int countPrimes(int n) {
+      boolean check[]=new boolean[n];
+        int count=0;
+        for(int i=2;i<n;i++){
+            if(check[i]==false){
+                count++;
+                for(int j=i;j<n;j+=i){
+                    check[j]=true;
+                }
+            }
+        }
+        return count;
+    }
+}
+
+class Solution {
+    public int countPrimes(int n) {
+        if(n <= 2) return 0; //Checking 0 & 1
+        boolean[] composites = new boolean[n];
+        int limit = (int)Math.sqrt(n);
+        //Array of compoites --> True represent composite and False represents primes
+        for(int i = 2; i <= limit; i++){
+            if(composites[i] == false) {
+                //Mark all the multiples of i as true. 
+                //The first index to be flipped to true, is i*i
+                for(int j = i*i; j < n; j+=i){
+                    composites[j] = true;
+                }
+            }
+        }
+        
+        int count = 0;
+        for(int i = 2; i < n; i++) {
+            if(composites[i] == false) count++;
+        }
+        
+        return count;
+    }
+}
+
+is the prime number and so we can count
+the prime numbers
+that we are having the first and the
+foremost thing that we can do is
+if n is less than equal to 2 we can just
+return 0 because in that case we are
+just checking for
+0 and 1 that is less than n
+
+and we already know that 0 and 1 are
+not primes
+ for the rest we need to
+create a boolean  array
+
+ and this array would be of length
+n and now we'll take a for loop and our
+for loop will start from i
+equal to 2 and would go up to square
+root of
+n so let's take the limit till which we
+are going to go
+and that limit would be the root of
+n and since this is a double we need to
+convert it into an integer
+and over here will go only up to limit
+and we'll do i plus plus so that's our
+outer for loop
+wherein we are going to check whether
+the value
+that is there at that particular index
+is false or true
+and if it is false then and only then we
+are going to find the composites for
+that number
+so we check whether
+the value is false and if it is false we
+are going to
+mark all the composites of that
+particular number to
+true
+and the other thing that we saw is that
+the first
+index to be flipped to true is
+i into i so will start from
+j equal to i into i j is less than
+n and j plus equals to i
+because we need to mark the multiples as
+true
+so this would give us the next multiple
+in the next iteration
+so what we are going to do is composites
+of j
+is marked as true so this would give us
+the array of composites
+wherein true represent
+composite and
+false represents
+primes so since we have the array filled
+we just need to iterate over that array
+and we can start from
+i equal to 2 because that is our first
+prime i less than
+n and i plus plus and if
+the value is false we can do a
+count plus plus and that count will
+represent my prime so let's take
+count equal to 0 and finally
+just return the count and
+this will go till the square root
+
+rather than less than the square root so
+that's one of the mistakes that we made
+let's correct that and run the code
+and it's giving a perfect result let's
+try it for a random bigger number
+and it's giving a perfect result let's
+
+for this particular approach
+is root n for the outer loop
+multiplied by the time complexity for
+the inner for loop
+now the inner for loop has a time
+complexity of log of
+log of n if you want to go and check it
+out
+the link for the proof is given in the
+solution part
+over here and you can check out the
+proof how it is coming out to be that
+the space complexity is of n because we
+have used a boolean
+array of length n so that's it for this

@@ -1,0 +1,442 @@
+Explain the differences between linear and binary search along with the time complexity involved.
+2. Explain quick sort.
+3. Explain merge sort
+
+Rotate an array by d places.
+[1, 2, 3, 4, 5, 6, 7], d = 2, n =7
+[3, 4, 5, 6, 7, 1, 2]
+6. Compare time complexities and arrange in order
+
+https://www.javatpoint.com/find-unique-elements-in-array-java
+
+Find 
+
+
+https://www.javatpoint.com/java-program-to-print-the-duplicate-elements-of-an-array
+
+
+https://www.java67.com/2015/10/2-ways-to-find-duplicate-elements-in-java-array.html
+
+https://www.geeksforgeeks.org/find-the-nth-occurrence-of-a-character-in-the-given-string/
+
+An element in a sorted array can be found in O(log n) time via binary search.
+But suppose we rotate an ascending order sorted array at some pivot unknown to you
+beforehand.
+So for instance, 1 2 3 4 5 might become 3 4 5 1 2.
+Devise a way to find an element in the rotated array in O(log n) time.
+Example:
+Input : arr[] = {5, 6, 7, 8, 9, 10, 1, 2, 3}; key = 3
+Output : Found at index 8
+Input : arr[] = {5, 6, 7, 8, 9, 10, 1, 2, 3}; key = 30
+Output : Not found
+Input : arr[] = {30, 40, 50, 10, 20}; key = 10
+Output : Found at index 3
+
+https://www.geeksforgeeks.org/array-rotation/?ref=lbp
+------------------------------------------
+Given an n x m matrix and a number x, find the position of x in the matrix if it is present in it.
+Otherwise, print “Not Found”.
+In the given matrix, every row and column is sorted in increasing order.
+The designed algorithm should have linear time complexity (Big-O complexity O(N)).
+Input: mat[4][4] = { {10, 20, 30, 40},
+{15, 25, 35, 45},
+{27, 29, 37, 48},
+{32, 33, 39, 50}};
+x = 29
+Output: Found at (2, 1)
+
+https://www.geeksforgeeks.org/array-rotation/?ref=lbp
+Search in a row wise and column wise sorted matrix
+
+    Difficulty Level : Medium
+    Last Updated : 19 Sep, 2022
+
+Read
+Discuss
+
+Given an n x n matrix and an integer x, find the position of x in the matrix if it is present. Otherwise, print “Element not found”. Every row and column of the matrix is sorted in increasing order. The designed algorithm should have linear time complexity
+
+Examples: 
+
+    Input: mat[4][4] = { {10, 20, 30, 40},  x = 29
+                                   {15, 25, 35, 45},
+                                   {27, 29, 37, 48},
+                                 {32, 33, 39, 50}}
+     
+    Output: Found at (2, 1)
+    Explanation: Element at (2,1) is 29
+
+    Input : mat[4][4] = { {10, 20, 30, 40},   x = 100
+                                    {15, 25, 35, 45},
+                                   {27, 29, 37, 48},
+                                  {32, 33, 39, 50}};
+         
+    Output: Element not found
+    Explanation: Element 100 does not exist in the matrix
+
+Recommended Problem
+Search in a row-column sorted Matrix
+Matrix
+Searching
+Accolite
+Directi
++11 more
+Solve Problem
+Submission count: 49.7K
+
+Naive approach: To solve the problem follow the below idea:
+
+    The simple idea is to traverse the array and search elements one by one
+
+Follow the given steps to solve the problem:
+
+    Run a nested loop, outer loop for the row, and inner loop for the column
+    Check every element with x and if the element is found then print “element found”
+    If the element is not found, then print “element not found”
+
+Below is the implementation of the above approach:
+
+// Java program to search an element in row-wise
+// and column-wise sorted matrix
+ 
+class GFG {
+    static int search(int[][] mat, int n, int x)
+    {
+        if (n == 0)
+            return -1;
+ 
+        // traverse through the matrix
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++)
+                // if the element is found
+                if (mat[i][j] == x) {
+                    System.out.print("Element found at ("
+                                     + i + ", " + j
+                                     + ")\n");
+                    return 1;
+                }
+        }
+ 
+        System.out.print(" Element not found");
+        return 0;
+    }
+ 
+    // Driver code
+    public static void main(String[] args)
+    {
+        int mat[][] = { { 10, 20, 30, 40 },
+                        { 15, 25, 35, 45 },
+                        { 27, 29, 37, 48 },
+                        { 32, 33, 39, 50 } };
+ 
+        // Function call
+        search(mat, 4, 29);
+    }
+}
+ 
+// This code is contributed by Aditya Kumar (adityakumar129)
+Output
+
+Element found at (2, 1)
+
+Time Complexity: O(N2)
+Auxiliary Space: O(1), since no extra space has been taken
+
+Note: A better solution is to use Divide and Conquer to find the element which has a time complexity of O(n1.58). Please refer here for details
+Search in a row-wise and column-wise sorted matrix in linear time complexity:
+
+    The simple idea is to remove a row or column in each comparison until an element is found. Start searching from the top-right corner of the matrix. There are three possible cases:-
+
+        The given number is greater than the current number: This will ensure that all the elements in the current row are smaller than the given number as the pointer is already at the right-most elements and the row is sorted. Thus, the entire row gets eliminated and continues the search for the next row. Here, elimination means that a row needs not to be searched.
+        The given number is smaller than the current number: This will ensure that all the elements in the current column are greater than the given number. Thus, the entire column gets eliminated and continues the search for the previous column, i.e. the column on the immediate left.
+        The given number is equal to the current number: This will end the search.
+
+Follow the given steps to solve the problem:
+
+    Let the given element be x, create two variable i = 0, j = n-1 as index of row and column.
+    Run a loop until i < n.
+        Check if the current element is greater than x then decrease the count of j. Exclude the current column.
+        Check if the current element is less than x then increase the count of i. Exclude the current row.
+        If the element is equal, then print the position and end.
+    Print the Element is not found
+
+Thanks to devendraiiit for suggesting the approach below
+
+Below is the implementation of the above approach:
+
+// JAVA Code for Search in a row wise and
+// column wise sorted matrix
+ 
+class GFG {
+ 
+    /* Searches the element x in mat[][]. If the
+    element is found, then prints its position
+    and returns true, otherwise prints "not found"
+    and returns false */
+    private static void search(int[][] mat, int n, int x)
+    {
+ 
+        // set indexes for top right
+        int i = 0, j = n - 1;
+        // element
+ 
+        while (i < n && j >= 0) {
+            if (mat[i][j] == x) {
+                System.out.print("Element found at " + i
+                                 + " " + j);
+                return;
+            }
+            if (mat[i][j] > x)
+                j--;
+            else // if mat[i][j] < x
+                i++;
+        }
+ 
+        System.out.print("n Element not found");
+        return; // if ( i==n || j== -1 )
+    }
+    // Driver code
+    public static void main(String[] args)
+    {
+        int mat[][] = { { 10, 20, 30, 40 },
+                        { 15, 25, 35, 45 },
+                        { 27, 29, 37, 48 },
+                        { 32, 33, 39, 50 } };
+ 
+        // Function call
+        search(mat, 4, 29);
+    }
+}
+// This code is contributed by Arnav Kr. Mandal.
+Output
+
+Element found at 2, 1
+
+)Given an integer array Arr[] and number N ,
+you need to write a program to find it a pair of elements
+exits in the array whose difference is N
+int arr[] = {90,50,20,80,70}
+int N =20
+o/p 90,70 || 70,50
+
+https://www.geeksforgeeks.org/find-a-pair-with-the-given-difference/
+
+https://www.tutorialcup.com/interview/array/find-pair-with-given-difference.htm
+
+https://afteracademy.com/blog/check-for-pair-in-an-array-with-a-given-sum
+
+https://coderbyte.com/algorithm/two-sum-problem
+2)Arrays,
+Subarray with given sum
+int S=12
+int A[]=1 2 3 7 51
+
+https://www.geeksforgeeks.org/find-subarray-with-given-sum/
+
+https://www.geeksforgeeks.org/find-a-repeating-and-a-missing-number/
+ind the missing and repeating number
+
+    Difficulty Level : Medium
+    Last Updated : 01 Sep, 2022
+
+Read
+Discuss
+
+Given an unsorted array of size n. Array elements are in the range of 1 to n. One number from set {1, 2, …n} is missing and one number occurs twice in the array. Find these two numbers.
+
+Examples: 
+
+    Input: arr[] = {3, 1, 3}
+    Output: Missing = 2, Repeating = 3
+    Explanation: In the array, 2 is missing and 3 occurs twice 
+
+    Input: arr[] = {4, 3, 6, 2, 1, 1}
+    Output: Missing = 5, Repeating = 1
+
+Recommended Problem
+Find Missing And Repeating
+Arrays
+Amazon
+D-E-Shaw
++3 more
+Solve Problem
+Submission count: 1.6L
+
+Below are various methods to solve the problems: 
+
+Method 1 (Use Sorting)
+Approach: 
+
+    Sort the input array.
+    Traverse the array and check for missing and repeating.
+
+Time Complexity: O(nLogn)
+
+Thanks to LoneShadow for suggesting this method.
+
+Method 2 (Use count array)
+Approach: 
+
+    Create a temp array temp[] of size n with all initial values as 0.
+    Traverse the input array arr[], and do following for each arr[i] 
+        if(temp[arr[i]] == 0) temp[arr[i]] = 1;
+        if(temp[arr[i]] == 1) output “arr[i]” //repeating
+    Traverse temp[] and output the array element having value as 0 (This is the missing element)
+
+Time Complexity: O(n)
+Auxiliary Space: O(n)
+
+Method 3 (Use elements as Index and mark the visited places)
+Approach: 
+Traverse the array. While traversing, use the absolute value of every element as an index and make the value at this index as negative to mark it visited. If something is already marked negative then this is the repeating element. To find missing, traverse the array again and look for a positive value.
+
+/ Java program to Find the repeating
+// and missing elements
+ 
+import java.io.*;
+ 
+class GFG {
+ 
+    static void printTwoElements(int arr[], int size)
+    {
+        int i;
+        System.out.print("The repeating element is ");
+ 
+        for (i = 0; i < size; i++) {
+            int abs_val = Math.abs(arr[i]);
+            if (arr[abs_val - 1] > 0)
+                arr[abs_val - 1] = -arr[abs_val - 1];
+            else
+                System.out.println(abs_val);
+        }
+ 
+        System.out.print("and the missing element is ");
+        for (i = 0; i < size; i++) {
+            if (arr[i] > 0)
+                System.out.println(i + 1);
+        }
+    }
+ 
+    // Driver code
+    public static void main(String[] args)
+    {
+        int arr[] = { 7, 3, 4, 5, 5, 6, 2 };
+        int n = arr.length;
+        printTwoElements(arr, n);
+    }
+}
+ 
+// This code is contributed by Gitanjali
+Output
+
+The repeating element is 5
+and the missing element is 1
+
+Check if a string is palindrome or not
+
+https://www.tutorialspoint.com/How-to-check-a-String-for-palindrome-using-arrays-in-java
+
+
+You can check the String as Palindrome or not in single loop , in O(n), only by iterating from both ends like compare first with last, second with second-last and so on like :-
+
+String st1 = "RACECAR";
+int flag=0;   
+    for (int j=0;j<=str1.length()-1 ;j++)   
+    {   
+     if (st1.charAt(j)!=st1.charAt(st1.length()-j-1))   
+     {   
+     flag=1;   
+     break;   
+     }   
+    }  
+  if(flag==1)   
+  System.out.println("String is not a palindrome");   
+  else   
+    System.out.println("String is a palindrome"); 
+
+Output :- String is a palindrome
+
+2. Find mid point of linked list
+https://www.geeksforgeeks.org/write-a-c-function-to-print-the-middle-of-the-linked-list/
+3. Implement a stack
+
+https://www.geeksforgeeks.org/introduction-to-stack-data-structure-and-algorithm-tutorials/
+
+https://www.geeksforgeeks.org/given-an-array-a-and-a-number-x-check-for-pair-in-a-with-sum-as-x/
+
+https://www.geeksforgeeks.org/count-distinct-pairs-with-given-sum/
+
+https://www.geeksforgeeks.org/find-k-numbers-occurrences-given-array/
+
+https://afteracademy.com/blog/check-for-pair-in-an-array-with-a-given-sum
+
+
+https://algorithms.tutorialhorizon.com/find-the-element-which-appears-maximum-number-of-times-in-the-array/
+
+https://gist.github.com/dryear/2ff80ab30649765f6fbb19da6839caad
+
+https://www.geeksforgeeks.org/given-a-sequence-of-words-print-all-anagrams-together-set-2/
+
+https://www.geeksforgeeks.org/given-a-sequence-of-words-print-all-anagrams-together-using-stl/
+https://leetcode.com/problems/group-anagrams/  |  https://leetcode.com/problems/group-anagrams/
+
+What is Hash Table?
+What is Hashing?
+What is complexity of Hash Table?
+what is a Hash Function?
+difference between Hashing and Hash Tables?
+example of Hash Function
+What is Arrays, Advantages and limitations
+Default Array Values
+find and remove duplicate elements.
+https://www.geeksforgeeks.org/remove-duplicates-from-a-given-string/
+time complexity
+Median of two sorted arrays of same size
+https://www.geeksforgeeks.org/median-of-two-sorted-arrays/
+Move all zeroes to end of array
+
+https://www.geeksforgeeks.org/move-zeroes-end-array/
+
+Explain the differences between linear and binary search along with the time complexities.
+2. Explain quick sort along with the time complexity involved.
+3. Suppose we are sorting an array of eight integers using quicksort, and we have just finished the first partitioning with the array looking like this:
+2 5 1 7 9 12 11 10
+What could be the possible pivot for first iteration
+
+https://www.geeksforgeeks.org/algorithms-searching-and-sorting-question-12/
+4. What is the output of following program?
+#include <stdio.h>
+void print(int n, int j)
+{
+if (j >= n)
+return;
+if (n-j > 0 && n-j >= j)
+printf("%d %dn", j, n-j);
+print(n, j+1);
+}
+int main()
+{
+int n = 8;
+print(n, 1);
+}
+5.
+Rotate an array by d places.
+[1, 2, 3, 4, 5, 6, 7], d = 2, n =7
+[3, 4, 5, 6, 7, 1, 2]
+56 Anand Prakash Pankaj meena Medium
+What is Hash Table
+
+Code 1: Sort the array in a way all odd numbers came first in ascending order and all even numbers came in descending order.
+Input: {1 6 2 7 3 9 8 4}
+Output: {1 3 7 9 8 6 4 2}
+https://www.geeksforgeeks.org/sort-even-numbers-ascending-order-sort-odd-numbers-descending-order/
+
+https://algorithms.tutorialhorizon.com/sort-an-array-odd-numbers-appear-first-in-ascending-order-followed-by-the-even-numbers-in-descending-order/
+
+Code 2: Find the maximum repeated element from the array, if multiple element have the same high-frequency return a big number.
+Input: {1 6 4 2 7 4 2 3 9 2 8 4}
+Output: 4
+https://www.geeksforgeeks.org/frequent-element-array/
+
+merge sort, quick sort, chck an array sorted or not sorted, find peek elemnt in an array, rotate an matrix clockwise
+

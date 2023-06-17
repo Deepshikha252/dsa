@@ -1,0 +1,166 @@
+Reverse an array in Java
+
+    Difficulty Level : Easy
+    Last Updated : 08 Apr, 2022
+
+Read
+Discuss
+
+Given an array, the task is to reverse the given array in Java.
+
+Examples: 
+
+Input : 1, 2, 3, 4, 5
+Output :5, 4, 3, 2, 1
+
+Input :  10, 20, 30, 40
+Output : 40, 30, 20, 10
+
+
+1. Using Temp array
+
+The first method is as follows: 
+
+    Take input the size of the array and the elements of the array.
+    Consider a function reverse which takes the parameters-the array(say arr) and the size of the array(say n).
+    Inside the function, a new array (with the array size of the first array, arr) is initialized. The array arr[] is iterated from the first element, and each element of array arr[] is placed in the new array from the back, i.e., the new array is iterated from its last element.
+    In this way, all the elements of the array arr[] are placed reversely in the new array.
+    Further, we can iterate through the new array from the beginning and print the elements of the array.
+
+// Basic Java program that reverses an array
+  
+public class reverseArray {
+  
+    // function that reverses array and stores it 
+    // in another array
+    static void reverse(int a[], int n)
+    {
+        int[] b = new int[n];
+        int j = n;
+        for (int i = 0; i < n; i++) {
+            b[j - 1] = a[i];
+            j = j - 1;
+        }
+  
+        // printing the reversed array
+        System.out.println("Reversed array is: \n");
+        for (int k = 0; k < n; k++) {
+            System.out.println(b[k]);
+        }
+    }
+  
+    public static void main(String[] args)
+    {
+        int [] arr = {10, 20, 30, 40, 50};
+        reverse(arr, arr.length);
+    }
+}
+Output
+
+Reversed array is: 
+
+50
+40
+30
+20
+10
+
+2. Using Swapping
+
+The second method uses a similar code for the inputting and printing of the array. However, we don’t create a new array like the above method. Instead, we reverse the original array itself. In this method, we swap the elements of the array. The first element is swapped with the last element. The second element is swapped with the last but one element and so on. 
+For instance, consider array [1, 2, 3, …., n-2, n-1, n]. We swap 1 with n, 2 with n-1, 3 with n-2 and further. 
+ 
+
+// Java Program that reverses array
+// in less number of swaps
+  
+public class arrayReverse {
+  
+    // function swaps the array's first element with last
+    // element, second element with last second element and
+    // so on
+    static void reverse(int a[], int n)
+    {
+        int i, k, t;
+        for (i = 0; i < n / 2; i++) {
+            t = a[i];
+            a[i] = a[n - i - 1];
+            a[n - i - 1] = t;
+        }
+  
+        // printing the reversed array
+        System.out.println("Reversed array is: \n");
+        for (k = 0; k < n; k++) {
+            System.out.println(a[k]);
+        }
+    }
+  
+    public static void main(String[] args)
+    {
+        int[] arr = { 10, 20, 30, 40, 50 };
+        reverse(arr, arr.length);
+    }
+}
+Output
+
+Reversed array is: 
+
+50
+40
+30
+20
+10
+
+// java program to reverse a word
+  
+import java.io.*;
+import java.util.Scanner;
+  
+class GFG {
+    public static void main (String[] args) {
+        
+        String str= "Geeks", nstr="";
+        char ch;
+        
+      System.out.print("Original word: ");
+      System.out.println("Geeks"); //Example word
+        
+      for (int i=0; i<str.length(); i++)
+      {
+        ch= str.charAt(i); //extracts each character
+        nstr= ch+nstr; //adds each character in front of the existing string
+      }
+      System.out.println("Reversed word: "+ nstr);
+    }
+}
+  
+//Contributed by Tiyasa
+Output
+
+Original word: Geeks
+Reversed word: skeeG
+
+    Reversing String by taking input from user-
+
+/*package whatever //do not write package name here */
+  
+import java.io.*;
+import java.util.Scanner;
+class GFG {
+    public static void main (String[] args) {
+  
+        Scanner scanner = new Scanner(System.in);
+        String Str = scanner.nextLine();
+        char[] arr = Str.toCharArray();
+                  
+        String rev = "";
+    
+ for(int i = Str.length() - 1; i >= 0; i--)
+ {
+ rev = rev + Str.charAt(i);
+ }
+   
+ System.out.println(rev);
+          
+    }
+}
